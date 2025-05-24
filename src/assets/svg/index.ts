@@ -1,4 +1,10 @@
 export * from './Logo'
-export * from './HeartBPM'
+export * from './HeartBpm'
 export * from './RespiratoryRate'
 export * from './Temperature'
+export * from './InsuranceIcon'
+export * from './BirthIcon'
+export * from './PhoneIcon'
+export * from './FemaleIcon'
+export * from './InsuranceIcon'
+
