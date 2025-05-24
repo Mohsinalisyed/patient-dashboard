@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Box } from '@mui/material';
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar, Box, Typography } from '@mui/material';
 import { Patient } from '../types/patient';
 
 interface SidebarProps {
@@ -7,26 +7,39 @@ interface SidebarProps {
   onPatientSelect: (name: string) => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ patients, selectedPatientName, onPatientSelect }) => (
-  <Box sx={{
-    height: '100%',
-    background: '#fff',
-    borderRight: '1px solid #E5E8EF',
-    px: 0,
-    py: 2,
-    overflowY: 'auto',
-  }}>
-    <List sx={{ width: '100%' }}>
+export const Sidebar: React.FC<SidebarProps> = ({
+  patients,
+  selectedPatientName,
+  onPatientSelect,
+}) => (
+  <Box
+    sx={{
+      height: "1054px",
+      background: "#fff",
+      borderRight: "1px solid #E5E8EF",
+      px: 0,
+      py: 2,
+      overflowY: "auto",
+    }}
+  >
+    <Typography variant="h3" fontSize={24}  sx={{ p: 1, pb: 0 }} style={{ fontWeight: '600' }}>
+      Patients
+    </Typography>
+    <List sx={{ width: "100%" }}>
       {patients.map((patient) => (
         <ListItem
           key={patient.name}
           onClick={() => onPatientSelect(patient.name)}
           sx={{
             borderRadius: 1,
-            background: patient.name === selectedPatientName ? '#E6F7F6' : 'transparent',
-            boxShadow: patient.name === selectedPatientName ? '0 2px 8px rgba(0, 204, 204, 0.08)' : 'none',
-            '&:hover': { background: '#F5F6FA' },
-            cursor: 'pointer',
+            background:
+              patient.name === selectedPatientName ? "#E6F7F6" : "transparent",
+            boxShadow:
+              patient.name === selectedPatientName
+                ? "0 2px 8px rgba(0, 204, 204, 0.08)"
+                : "none",
+            "&:hover": { background: "#F5F6FA" },
+            cursor: "pointer",
             px: 2,
             py: 1,
             mb: 1,
@@ -37,10 +50,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ patients, selectedPatientName,
           </ListItemAvatar>
           <ListItemText
             primary={
-              <span style={{
-                fontWeight: 700,
-                color: patient.name === selectedPatientName ? '#00CCCC' : '#1A1A1A'
-              }}>
+              <span
+                style={{
+                  color:
+                    patient.name === selectedPatientName
+                      ? "#00CCCC"
+                      : "#1A1A1A",
+                }}
+              >
                 {patient.name}
               </span>
             }

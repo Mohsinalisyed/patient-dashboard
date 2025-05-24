@@ -26,8 +26,8 @@ export const fetchAllPatients = async (): Promise<Patient[]> => {
   }
 };
 
-export const getPatientById = (patients: Patient[], id: string): Patient | undefined => {
-  return patients.find(patient => patient.name === id);
+export const getPatientByName = (patients: Patient[], name: string): Patient | undefined => {
+  return patients.find(patient => patient.name === name);
 };
 
 export const fetchPatientData = async (
