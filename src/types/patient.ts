@@ -1,22 +1,34 @@
+export interface DiagnosisHistoryEntry {
+  month: string;
+  year: number;
+  blood_pressure: {
+    systolic: { value: number; levels: string };
+    diastolic: { value: number; levels: string };
+  };
+  heart_rate: { value: number; levels: string };
+  respiratory_rate: { value: number; levels: string };
+  temperature: { value: number; levels: string };
+}
+
+export interface DiagnosticListEntry {
+  name: string;
+  description: string;
+  status: string;
+}
+
 export interface Patient {
   id: string;
   name: string;
-  age: number;
   gender: string;
-  profilePicture: string;
-  dateOfBirth: string;
-  phoneNumber: string;
-  emergencyContact: string;
-  insuranceType: string;
-  bloodPressure: BloodPressure[];
-  weight: number;
-  height: number;
-  bmi: number;
-  lastVisit: string;
-  nextAppointment: string;
-  medications: Medication[];
-  allergies: string[];
-  conditions: string[];
+  age: number;
+  profile_picture: string;
+  date_of_birth: string;
+  phone_number: string;
+  emergency_contact: string;
+  insurance_type: string;
+  diagnosis_history: DiagnosisHistoryEntry[];
+  diagnostic_list: DiagnosticListEntry[];
+  lab_results: string[];
 }
 
 export interface BloodPressure {

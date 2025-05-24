@@ -20,7 +20,7 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({ patient }) => (
   >
     <Box
       component="img"
-      src={patient.profilePicture}
+      src={patient.profile_picture}
       alt={patient.name}
       sx={{
         width: 140,
@@ -41,8 +41,7 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({ patient }) => (
             Date Of Birth
           </Typography>
           <Typography fontWeight={700} fontSize={16}>
-            {" "}
-            {new Date(patient.dateOfBirth).toLocaleDateString("en-US", {
+            {new Date(patient.date_of_birth).toLocaleDateString("en-US", {
               month: "long",
               day: "numeric",
               year: "numeric",
@@ -68,7 +67,7 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({ patient }) => (
             Contact Info.
           </Typography>
           <Typography fontWeight={700} fontSize={16}>
-            {patient.phoneNumber}
+            {patient.phone_number}
           </Typography>
         </Box>
       </Box>
@@ -79,18 +78,18 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({ patient }) => (
             Emergency Contacts
           </Typography>
           <Typography fontWeight={700} fontSize={16}>
-            {patient.emergencyContact}
+            {patient.emergency_contact}
           </Typography>
         </Box>
       </Box>
-            <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap:2 }}>
-                <InsuranceIcon/>
+      <Box sx={{ display: "flex", alignItems: "center", mb: 2, gap:2 }}>
+        <InsuranceIcon/>
         <Box>
           <Typography fontSize={14} color="#666">
             Insurance Provider
           </Typography>
           <Typography fontWeight={700} fontSize={16}>
-            {patient.insuranceType}
+            {patient.insurance_type}
           </Typography>
         </Box>
       </Box>

@@ -11,7 +11,7 @@ export const RightPanel: React.FC<RightPanelProps> = ({ patient }) => (
   <Box>
     <PatientHeader patient={patient} />
     <Box sx={{ mt: 3 }}>
-      <LabResults />
+      <LabResults lab_results={patient.lab_results} />
     </Box>
   </Box>
 ); 

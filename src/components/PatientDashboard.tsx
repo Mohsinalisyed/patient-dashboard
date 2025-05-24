@@ -1,49 +1,15 @@
-import { useEffect, useState } from 'react';
-import { Box, Paper, Typography, CircularProgress, Grid } from '@mui/material';
+import { Box, Paper, Typography, Grid } from '@mui/material';
 import { Patient } from '../types/patient';
-import { fetchPatientData } from '../services/api';
 import { BloodPressureChart } from './BloodPressureChart';
 import { DiagnosticList } from './DiagnosticList';
 import { LabResults } from './LabResults';
 import { PatientHeader } from './PatientHeader';
 
-export const PatientDashboard: React.FC = () => {
-  const [patient, setPatient] = useState<Patient | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface PatientDashboardProps {
+  patient: Patient;
+}
 
-  useEffect(() => {
-    const loadPatientData = async () => {
-      try {
-        const data = await fetchPatientData();
-        setPatient(data);
-      } catch (err) {
-        setError('Failed to load patient data');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadPatientData();
-  }, []);
-
-  if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <CircularProgress />
-      </Box>
-    );
-  }
-
-  if (error || !patient) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <Typography color="error">{error || 'No patient data available'}</Typography>
-      </Box>
-    );
-  }
-
+export const PatientDashboard: React.FC<PatientDashboardProps> = ({ patient }) => {
   return (
     <Box
       sx={{
@@ -68,19 +34,19 @@ export const PatientDashboard: React.FC = () => {
             >
               Diagnosis History
             </Typography>
-            <BloodPressureChart />
+            <BloodPressureChart diagnosis_history={patient.diagnosis_history} />
           </Paper>
           {/* Diagnostic List below chart */}
           <Box sx={{ mt: 3 }}>
-            <DiagnosticList />
+            <DiagnosticList diagnostic_list={patient.diagnostic_list} />
           </Box>
         </Grid>
         {/* Patient Header and Lab Results */}
         <Grid size={4}>
-    <PatientHeader patient={patient}/>
+          <PatientHeader patient={patient}/>
           {/* Lab Results below patient header */}
           <Box sx={{ mt: 3 }}>
-            <LabResults />
+            <LabResults lab_results={patient.lab_results} />
           </Box>
         </Grid>
       </Grid>

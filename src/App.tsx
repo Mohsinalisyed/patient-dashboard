@@ -1,9 +1,48 @@
 import { Box } from '@mui/material';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { TopNav } from './components/TopNav';
 import { Sidebar } from './components/Sidebar';
 import { PatientDashboard } from './components/PatientDashboard';
+import { fetchAllPatients, getPatientByName } from './services/api';
+import { Patient } from './types/patient';
 
-export default function App() {
+const queryClient = new QueryClient();
+
+function AppContent() {
+  const [selectedPatientName, setSelectedPatientName] = useState<string>('Ryan Johnson');
+
+  const { data: patients, isLoading, error } = useQuery<Patient[]>({
+    queryKey: ['patients'],
+    queryFn: fetchAllPatients
+  });
+
+  if (isLoading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        Loading...
+      </Box>
+    );
+  }
+
+  if (error || !patients) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        Error loading patient data
+      </Box>
+    );
+  }
+
+  const selectedPatient = getPatientByName(patients, selectedPatientName);
+
+  if (!selectedPatient) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+        Selected patient not found
+      </Box>
+    );
+  }
+
   return (
     <Box
       sx={{
@@ -15,9 +54,8 @@ export default function App() {
         px: "18px",
       }}
     >
-  
-        <TopNav />
-      <Box sx={{ display: "flex", }}>
+      <TopNav />
+      <Box sx={{ display: "flex" }}>
         {/* Sidebar */}
         <Box
           sx={{
@@ -30,13 +68,25 @@ export default function App() {
             height: "100%",
           }}
         >
-          <Sidebar />
+          <Sidebar 
+            patients={patients} 
+            selectedPatientName={selectedPatientName}
+            onPatientSelect={setSelectedPatientName}
+          />
         </Box>
         {/* Main Content */}
-        <Box sx={{ flex: 1, minWidth: 0,pl:4 }}>
-          <PatientDashboard />
+        <Box sx={{ flex: 1, minWidth: 0, pl: 4 }}>
+          <PatientDashboard patient={selectedPatient} />
         </Box>
       </Box>
     </Box>
+  );
+}
+
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AppContent />
+    </QueryClientProvider>
   );
 } 

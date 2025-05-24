@@ -1,15 +1,11 @@
 import { Paper, List, ListItem, ListItemText, ListItemIcon, Typography} from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 
-const results = [
-  { label: 'Blood Tests' },
-  { label: 'CT Scans', selected: true },
-  { label: 'Radiology Reports' },
-  { label: 'X-Rays' },
-  { label: 'Urine Test' },
-];
+interface LabResultsProps {
+  lab_results: string[];
+}
 
-export const LabResults = () => (
+export const LabResults: React.FC<LabResultsProps> = ({ lab_results }) => (
   <Paper
     sx={{ borderRadius: 3, background: "#fff", p: 0, boxShadow: "none", mt: 3 }}
   >
@@ -17,13 +13,13 @@ export const LabResults = () => (
       Lab Results
     </Typography>
     <List sx={{ width: "100%",pt:0 }}>
-      {results.map((item, idx) => (
+      {lab_results.map((label, idx) => (
         <ListItem
-          key={`${item.label}-${idx}`}
+          key={`${label}-${idx}`}
           sx={{
             borderRadius: 2,
-            background: item.selected ? "#E6F7F6" : "transparent",
-            boxShadow: item.selected
+            background: idx === 0 ? "#E6F7F6" : "transparent",
+            boxShadow: idx === 0
               ? "0 2px 8px rgba(0, 204, 204, 0.08)"
               : "none",
             "&:hover": { background: "#F5F6FA" },
@@ -43,11 +39,11 @@ export const LabResults = () => (
             primary={
               <Typography
                 sx={{
-                  fontWeight: item.selected ? 700 : 500,
-                  color: item.selected ? "#00CCCC" : "#1A1A1A",
+                  fontWeight: idx === 0 ? 700 : 500,
+                  color: idx === 0 ? "#00CCCC" : "#1A1A1A",
                 }}
               >
-                {item.label}
+                {label}
               </Typography>
             }
           />
