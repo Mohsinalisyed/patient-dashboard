@@ -29,7 +29,8 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ patient }) =
             }}
           >
             <Typography
-              variant="h6"
+              fontWeight={700}
+              fontSize={18}
               sx={{ mb: 2, fontWeight: 600, color: "#1A1A1A" }}
             >
               Diagnosis History
@@ -43,7 +44,7 @@ export const PatientDashboard: React.FC<PatientDashboardProps> = ({ patient }) =
         </Grid>
         {/* Patient Header and Lab Results */}
         <Grid size={4}>
-          <PatientHeader patient={patient}/>
+          <PatientHeader patient={patient} />
           {/* Lab Results below patient header */}
           <Box sx={{ mt: 3 }}>
             <LabResults lab_results={patient.lab_results} />

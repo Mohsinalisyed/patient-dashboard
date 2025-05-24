@@ -22,7 +22,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       overflowY: "auto",
     }}
   >
-    <Typography variant="h3" fontSize={24}  sx={{ p: 1, pb: 0 }} style={{ fontWeight: '600' }}>
+    <Typography fontWeight={700} fontSize={18} sx={{ p: 1, pb: 0 }}>
       Patients
     </Typography>
     <List sx={{ width: "100%" }}>

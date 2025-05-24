@@ -7,25 +7,31 @@ interface LabResultsProps {
 
 export const LabResults: React.FC<LabResultsProps> = ({ lab_results }) => (
   <Paper
-    sx={{ borderRadius: 3, background: "#fff", p: 0, boxShadow: "none", mt: 3 }}
+    sx={{
+      borderRadius: 3,
+      background: "#fff",
+      p: 0,
+      boxShadow: "none",
+      mt: 3,
+      height: "298px",
+      overflowY: "auto",
+    }}
   >
-    <Typography variant="h6" fontWeight={700} sx={{ p: 3, pb: 0 }}>
+    <Typography fontWeight={700} fontSize={18} sx={{ p: 3, pb: 0 }}>
       Lab Results
     </Typography>
-    <List sx={{ width: "100%",pt:0 }}>
+    <List sx={{ width: "100%", pt: 0 }}>
       {lab_results.map((label, idx) => (
         <ListItem
           key={`${label}-${idx}`}
           sx={{
             borderRadius: 2,
             background: idx === 0 ? "#E6F7F6" : "transparent",
-            boxShadow: idx === 0
-              ? "0 2px 8px rgba(0, 204, 204, 0.08)"
-              : "none",
+            boxShadow: idx === 0 ? "0 2px 8px rgba(0, 204, 204, 0.08)" : "none",
             "&:hover": { background: "#F5F6FA" },
             cursor: "pointer",
             px: 3,
-            py: '11px',
+            py: "11px",
             display: "flex",
             alignItems: "center",
           }}

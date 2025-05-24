@@ -6,16 +6,22 @@ interface DiagnosticListProps {
 }
 
 export const DiagnosticList: React.FC<DiagnosticListProps> = ({ diagnostic_list }) => (
-  <Paper sx={{ borderRadius: 3, background: '#fff', p: 0, boxShadow: 'none', mt: 3 }}>
-    <Typography variant="h6" fontWeight={700} sx={{ p: 3, pb: 0 }}>
+  <Paper
+    sx={{ borderRadius: 3, background: "#fff", p: 0, boxShadow: "none", mt: 3,height: "339px",overflowY: "auto"}}
+  >
+    <Typography fontWeight={700} fontSize={18} sx={{ p: 3, pb: 0 }}>
       Diagnostic List
     </Typography>
     <TableContainer>
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell sx={{ fontWeight: 700, fontSize: 16 }}>Problem/Diagnosis</TableCell>
-            <TableCell sx={{ fontWeight: 700, fontSize: 16 }}>Description</TableCell>
+            <TableCell sx={{ fontWeight: 700, fontSize: 16 }}>
+              Problem/Diagnosis
+            </TableCell>
+            <TableCell sx={{ fontWeight: 700, fontSize: 16 }}>
+              Description
+            </TableCell>
             <TableCell sx={{ fontWeight: 700, fontSize: 16 }}>Status</TableCell>
           </TableRow>
         </TableHead>

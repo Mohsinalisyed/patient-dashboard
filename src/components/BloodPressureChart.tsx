@@ -72,40 +72,40 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
     <>
       <Paper
         sx={{
-          height: "298px",
           background: "#F4F0FE",
           borderRadius: "12px",
           opacity: 1,
           p: 3,
-          mb: 3,
+          mb: 1,
           boxShadow: "none",
         }}
       >
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="flex-start"
-          mb={2}
-        >
-          <Typography variant="h6" fontWeight={700}>
-            Blood Pressure
-          </Typography>
-          <Select
-            value="6m"
-            size="small"
-            sx={{
-              fontWeight: 500,
-              fontSize: 14,
-              background: "#fff",
-              borderRadius: 2,
-            }}
-          >
-            <MenuItem value="6m">Last 6 months</MenuItem>
-          </Select>
-        </Box>
         <Box sx={{ display: "flex", gap: 4 }}>
           {/* Chart */}
-          <Box sx={{ flex: 1, minWidth: 0, height: 250 }}>
+          <Box sx={{ flex: 1, minWidth: 0, height: 220 }}>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="flex-start"
+              mb={2}
+            >
+              <Typography variant="h6" fontWeight={700}>
+                Blood Pressure
+              </Typography>
+              <Select
+                value="6m"
+                size="small"
+                sx={{
+                  fontWeight: 500,
+                  fontSize: 14,
+                  background: "#fff",
+                  borderRadius: 2,
+                  backgroundColor: "transparent",
+                }}
+              >
+                <MenuItem value="6m">Last 6 months</MenuItem>
+              </Select>
+            </Box>
             <Line data={chartData} options={chartOptions} />
           </Box>
           {/* Systolic/Diastolic Summary */}
@@ -127,9 +127,7 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
                   background: "#D16FFF",
                 }}
               />
-              <Typography sx={{ fontWeight: 700 }}>
-                Systolic
-              </Typography>
+              <Typography sx={{ fontWeight: 700 }}>Systolic</Typography>
             </Box>
             <Typography
               sx={{ color: "#1A1A1A", fontWeight: 700, fontSize: 28, mb: 0 }}
@@ -149,9 +147,7 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
                   background: "#7B61FF",
                 }}
               />
-              <Typography sx={{ fontWeight: 700 }}>
-                Diastolic
-              </Typography>
+              <Typography sx={{ fontWeight: 700 }}>Diastolic</Typography>
             </Box>
             <Typography
               sx={{ color: "#1A1A1A", fontWeight: 700, fontSize: 28, mb: 0 }}
@@ -172,7 +168,6 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
               background: "#E6F7F6",
               borderRadius: 3,
               p: 2,
-              textAlign: "center",
               boxShadow: "none",
             }}
           >
@@ -194,7 +189,6 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
               background: "#FFF2F2",
               borderRadius: 3,
               p: 2,
-              textAlign: "center",
               boxShadow: "none",
             }}
           >
@@ -216,7 +210,6 @@ export const BloodPressureChart: React.FC<BloodPressureChartProps> = ({ diagnosi
               background: "#FFE6F0",
               borderRadius: 3,
               p: 2,
-              textAlign: "center",
               boxShadow: "none",
             }}
           >
