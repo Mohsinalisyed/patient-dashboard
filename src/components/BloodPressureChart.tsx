@@ -1,9 +1,7 @@
 import { Box, Typography, Grid, Paper, MenuItem, Select } from '@mui/material';
 import { Line } from 'react-chartjs-2';
 import { Chart, LineElement, PointElement, LinearScale, CategoryScale, Legend, Tooltip } from 'chart.js';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThermostatIcon from '@mui/icons-material/Thermostat';
-import AirIcon from '@mui/icons-material/Air';
+import { HeartBPM, RespiratoryRate, Temperature } from '../assets/svg';
 
 Chart.register(LineElement, PointElement, LinearScale, CategoryScale, Legend, Tooltip);
 
@@ -100,7 +98,7 @@ export const BloodPressureChart = () => (
     <Grid container spacing={2} mt={1}>
       <Grid size={4}>
         <Paper sx={{ background: '#E6F7F6', borderRadius: 3, p: 2, textAlign: 'center', boxShadow: 'none' }}>
-          <AirIcon sx={{ fontSize: 40, color: '#00CCCC' }} />
+          <RespiratoryRate />
           <Typography fontWeight={700} fontSize={22} mt={1}>20 bpm</Typography>
           <Typography fontSize={15} color="#888">Respiratory Rate</Typography>
           <Typography fontSize={13} color="#00CCCC" mt={0.5}>Normal</Typography>
@@ -108,7 +106,7 @@ export const BloodPressureChart = () => (
       </Grid>
       <Grid size={4}>
         <Paper sx={{ background: '#FFF2F2', borderRadius: 3, p: 2, textAlign: 'center', boxShadow: 'none' }}>
-          <ThermostatIcon sx={{ fontSize: 40, color: '#FFB547' }} />
+          <Temperature />
           <Typography fontWeight={700} fontSize={22} mt={1}>98.6°F</Typography>
           <Typography fontSize={15} color="#888">Temperature</Typography>
           <Typography fontSize={13} color="#FFB547" mt={0.5}>Normal</Typography>
@@ -116,7 +114,7 @@ export const BloodPressureChart = () => (
       </Grid>
       <Grid size={4}>
         <Paper sx={{ background: '#FFE6F0', borderRadius: 3, p: 2, textAlign: 'center', boxShadow: 'none' }}>
-          <FavoriteIcon sx={{ fontSize: 40, color: '#FF5A7D' }} />
+          <HeartBPM />
           <Typography fontWeight={700} fontSize={22} mt={1}>78 bpm</Typography>
           <Typography fontSize={15} color="#888">Heart Rate</Typography>
           <Typography fontSize={13} color="#FF5A7D" mt={0.5}>Lower than Average</Typography>

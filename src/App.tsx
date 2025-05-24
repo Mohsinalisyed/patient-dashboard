@@ -17,7 +17,7 @@ export default function App() {
     >
   
         <TopNav />
-      <Box sx={{ display: "flex", height: "calc(100vh - 64px)" }}>
+      <Box sx={{ display: "flex", }}>
         {/* Sidebar */}
         <Box
           sx={{
