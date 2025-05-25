@@ -27,7 +27,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     <Box
       className="sidebar-scroll"
       sx={{
-        height: "1054px",
+        height: "945px",
         background: "#fff",
         borderRight: "1px solid #E5E8EF",
         px: 0,
