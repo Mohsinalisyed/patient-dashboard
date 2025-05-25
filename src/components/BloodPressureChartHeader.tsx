@@ -22,7 +22,10 @@ export const BloodPressureChartHeader: React.FC<BloodPressureChartHeaderProps> =
       }}
       onChange={onChange ? (e) => onChange(e.target.value as string) : undefined}
     >
+      <MenuItem value="1m">Last month</MenuItem>
+      <MenuItem value="3m">Last 3 months</MenuItem>
       <MenuItem value="6m">Last 6 months</MenuItem>
+      <MenuItem value="1y">Last year</MenuItem>
     </Select>
   </Box>
 ); 
